@@ -15,7 +15,7 @@ namespace Weather
        
         static void Main(string[] args)
         {
-          
+          //Loop to run back to back
             while (true)
             {
                 //User Interface
@@ -28,6 +28,7 @@ namespace Weather
                 Console.WriteLine("B - Current Humidity By Zipcode");
                 string menuChoice = Console.ReadLine().ToUpper();
 
+                //Menu for each instance
                 if (menuChoice == "A")
                 {
                     Console.WriteLine("Enter your ZIP for Temperture Info!");
@@ -97,7 +98,6 @@ namespace Weather
 
         private static void DisplayTemperatures(WeatherObj model)
         {
-       
             Console.WriteLine($"The Temperature for {model.City} is:");
             Console.WriteLine($"Current Temperture: {model.Main.CurrentTemp}");
             Console.WriteLine($"With a high of {model.Main.HighTemp}");
@@ -118,7 +118,6 @@ namespace Weather
 
         private static void DisplayHumidity(WeatherObj model)
         {
-
             Console.WriteLine($"The Humidity for {model.City} is:");
             Console.WriteLine($"Current Humidity: {model.Main.Humidity}%");
             Console.WriteLine("Would you like save? Y/N");
@@ -127,17 +126,16 @@ namespace Weather
             {
                 SaveHumidity(model);
             }
-
+            //Cycle
             Console.Clear();
             Console.WriteLine("Thank you for using the Weather App.");
             Console.WriteLine("Press any key to search again...");
             Console.ReadLine();
 
         }
+        //Temperture Instance
         private static void SaveTemperatures(WeatherObj model)
         {
-          
-            
             using (StreamWriter writer = new StreamWriter("Temperature.txt", true))
             {
                 writer.WriteLine("******************************************");
@@ -153,10 +151,9 @@ namespace Weather
 
             }
         }
+        //Humidity Instance
         private static void SaveHumidity(WeatherObj model)
         {
-
-
             using (StreamWriter writer = new StreamWriter("Humidity.txt", true))
             {
                 writer.WriteLine("******************************************");
